@@ -76,3 +76,8 @@ def get_weather(citta: str):
             raise HTTPException(status_code=500, detail=f"Errore HTTP dal servizio meteo: {http_err}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Errore generico durante la richiesta meteo: {str(e)}")
+
+# --- Avvio locale (non richiesto da Vercel, utile per test) ---
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
